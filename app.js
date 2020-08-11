@@ -18,10 +18,24 @@ function n() {
 
 wx.currentAppVersion = "2.0.1", wx.prevAppVersion = "1.0.2", wx.reportSwitch = !0;
 
-var t = require("components/toast/toast.js"), o = require("components/modal/modal.js"), r = require("utils/es6-promise.min.js"), s = require("utils/http.js"), i = require("utils/apiUrl.js"), a = require("utils/xstream.js"), u = require("utils/core.js"), c = (require("./utils/ald-stat.js"), 
-u.retry), w = u.extend, l = u.omit, f = u.pick;
+var t = require("components/toast/toast.js"), 
+o = require("components/modal/modal.js"), 
+r = require("utils/es6-promise.min.js"), 
+s = require("utils/http.js"), 
+i = require("utils/apiUrl.js"), 
+a = require("utils/xstream.js"), 
+u = require("utils/core.js"), 
+c = (require("./utils/ald-stat.js"), u.retry), 
+w = u.extend, 
+l = u.omit, 
+f = u.pick;
 
-wx.toastAPI = t, wx.modalAPI = o, wx.Promise = r, wx.http = s, wx.xstream = a, u.deconstruction = require("utils/deconstruction.js").deconstruction, 
+wx.toastAPI = t, 
+wx.modalAPI = o, 
+wx.Promise = r, 
+wx.http = s, 
+wx.xstream = a, 
+u.deconstruction = require("utils/deconstruction.js").deconstruction, 
 require("utils/xstream.extra.js"), require("utils/wx.promise.js"), require("utils/wx.xstream.js"), 
 s.interceptor.push(function(n, t, o) {
     n.data.appCode = n.data.appCode || 2, n.data.appVersoin = wx.currentAppVersion, 
@@ -43,7 +57,8 @@ s.interceptor.push(function(n, t, o) {
             } else r(502 == a ? "服务器异常" : i); else o(i);
         });
     });
-}), wx.getAppVersion = function() {
+}), 
+wx.getAppVersion = function() {
     var e = a.Stream;
     return e.merge(e.of(wx.getStorageSync("app_version")).map(function(e) {
         return e || wx.prevAppVersion;
@@ -59,17 +74,22 @@ s.interceptor.push(function(n, t, o) {
     }).filter(function(e) {
         return !!e;
     }).distinctUntilChanged();
-}, wx.__system__info__ = wx.getSystemInfoSync(), wx._hasBeenLowVersionWarn = !!wx.getStorageSync("hasBeenLowVersionWarn"), 
+}, 
+wx.__system__info__ = wx.getSystemInfoSync(), 
+wx._hasBeenLowVersionWarn = !!wx.getStorageSync("hasBeenLowVersionWarn"), 
 wx.getChannelId = function() {
     return getApp().globalData.channelInfo.channelId;
-}, !wx._hasBeenLowVersionWarn && wx.__system__info__.SDKVersion && +wx.__system__info__.SDKVersion.replace(/\./g, "") < 120 && (wx.setStorage({
+}, 
+!wx._hasBeenLowVersionWarn && wx.__system__info__.SDKVersion && +wx.__system__info__.SDKVersion.replace(/\./g, "") < 120 && (wx.setStorage({
     key: "hasBeenLowVersionWarn",
     data: "1"
-}), wx.showModal({
+}), 
+wx.showModal({
     title: "提示",
     content: "您的微信版本过低，该小程序可能无法正常提供服务。",
     showCancel: !1
-})), wx._hasBeenLowVersionWarn = !0, wx.fetchDataWithSession = function(e, n, t, o) {
+})), 
+wx._hasBeenLowVersionWarn = !0, wx.fetchDataWithSession = function(e, n, t, o) {
     var r = o ? o.retry || 0 : 0, o = l(o || {}, [ "retry" ]);
     return c(function() {
         return wx.insureLogined().then(function(r) {
@@ -78,14 +98,16 @@ wx.getChannelId = function() {
             }), o);
         });
     })(r);
-}, wx.loginCpSystem = function(e) {
+}, 
+wx.loginCpSystem = function(e) {
     var n = getApp();
     return wx.http.get(i.getCpSysInfo, w({
         nickname: n.globalData.userInfo ? n.globalData.userInfo.nickname || "亲爱的" : "亲爱的",
         sessionKey: wx.getStorageSync("sessionKey"),
         channelId: wx.getChannelId()
     }, f(e, [ "channelId", "username", "password", "requestLoginSource", "orderId", "enterFrom", "userKey" ])));
-}, wx.loginFlow = function() {
+}, 
+wx.loginFlow = function() {
     return new r(function(e, n) {
         wx.login({
             success: function(t) {
@@ -105,7 +127,8 @@ wx.getChannelId = function() {
             fail: n
         });
     });
-}, wx.insureLogined = function() {
+}, 
+wx.insureLogined = function() {
     return new r(function(e, n) {
         function t() {
             wx.loginFlow().then(e, n);
@@ -173,7 +196,8 @@ wx.getUserInfoFlow = function(e) {
             }
         });
     });
-}, App({
+}, 
+App({
     globalData: {
         userInfo: {},
         channelInfo: {

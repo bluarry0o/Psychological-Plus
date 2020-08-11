@@ -11,9 +11,19 @@ var a = Object.assign || function(t) {
         for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]);
     }
     return t;
-}, e = getApp(), n = require("../../utils/apiUrl.js"), r = require("../../utils/core.js"), o = require("../../utils/page-mixins.js"), i = require("../../components/loading-animation/index.js"), s = wx.xstream, c = s.Stream, u = s.noop, d = {
+}, 
+e = getApp(), 
+n = require("../../utils/apiUrl.js"), 
+r = require("../../utils/core.js"), 
+o = require("../../utils/page-mixins.js"), 
+i = require("../../components/loading-animation/index.js"), 
+s = wx.xstream, 
+c = s.Stream, 
+u = s.noop, 
+d = {
     5: "w"
-}, f = {
+}, 
+f = {
     data: {
         frontAnimate: null,
         hotPage: 1,

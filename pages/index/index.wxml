@@ -46,7 +46,7 @@
 <import src="../../components/toast/toast.wxml"></import>
 <import src="../../components/loading-animation/index.wxml"></import>
 <view class="page-head">
-    <view bindtap="jumpAPP" class="page-title">壹心理测试+</view>
+    <view bindtap="jumpAPP" class="page-title">考研测试</view>
     <view class="page-search-wrap flex flex--middle">
         <image class="search-icon" src="../../asset/images/icon_search.png"></image>
         <view bindtap="jumpSearch" class="flex-item search-input color-weaken">搜索你感兴趣的测试</view>

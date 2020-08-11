@@ -2,7 +2,7 @@
 
 @import "../../components/test-question/question.wxss";
 
-@import "../../__wuBaseWxss__/7.wxss";
+/* @import "../../__wuBaseWxss__/7.wxss"; */
 
 .counter {
     position: absolute;
